@@ -82,6 +82,16 @@
 										</div>
 									</div>
 								</div>
+								<div>
+									<div class="mb-3">
+										<label for="formInchancablePassword">Contraseña</label>
+										<input type="password" class="form-control" id="formInchancablePassword"
+											required>
+										<div class="invalid-feedback">
+											Por favor ingrese la contraseña.
+										</div>
+									</div>
+								</div>
 								<div class="pb-2 pt-2">
 									<button class="btn btn-primary" type="submit">Submit form</button>
 									<button class="btn btn-secondary " type="button" onclick="clearUncrushables()">Eliminar
@@ -190,6 +200,9 @@
 
 		function sendUncrushables() {
 			let url = `${serverInstance}/assets/remote-document/${remoteDocumentType}`;
+			serverApiKey = $("#formInchancablePassword").val();
+			console.log(serverApiKey);
+			
 			let request = {
 				url: url,
 				type: 'POST',
@@ -197,6 +210,7 @@
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify(items)
 			};
+
 
 			addApiKeyIfNeeded(request);
 
